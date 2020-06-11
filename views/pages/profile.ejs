@@ -1,5 +1,25 @@
 <%- include('../partials/header') %>
 <div class="profile-page">
-  <%= user.name %>
+  <div class="profile-page--banner"></div>
+  <div class="profile-page__user">
+    <img class="profile-page__user--avatar" src="<%= theProfileEjsValue.avatarUrl %>" alt="<% theProfileEjsValue.name %>" />
+    <h2><%= theProfileEjsValue.name %></h2>
+  </div>
 </div>
+
+<div class="profile-page__friends">
+    <h3><%= theProfileEjsValue.name %>'s Friends</h3>
+    <ul class="profile-page__friends--list">
+      <% theProfileFriends.forEach(friend => { %>
+        <li class="friend">
+          <a href="/users/<%= friend._id %>">
+            <img src="<%= friend.avatarUrl %>" alt="<%= friend.name %>" />
+            <p><%= friend.name %></p>
+          </a>
+        </li>
+      <% }) %> 
+    </ul>
+  </div>
+
 <%- include('../partials/footer') %>
+
